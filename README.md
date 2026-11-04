@@ -52,6 +52,23 @@ python app.py
 
 O navegador abre em [http://127.0.0.1:7860](http://127.0.0.1:7860).
 
+No Windows também dá para abrir pelo ícone **YouTube para Markdown** da Área de
+Trabalho. Ele roda o `abrir.pyw`, que sobe o servidor sem janela de terminal; se o
+servidor já estiver no ar, só abre o navegador. A saída do servidor fica em
+`servidor.log`. Para encerrar, finalize o processo `python.exe` no Gerenciador de
+Tarefas ou reinicie o computador.
+
+Para recriar o atalho (PowerShell, na pasta do projeto):
+
+```powershell
+$lnk = (New-Object -ComObject WScript.Shell).CreateShortcut("$([Environment]::GetFolderPath('Desktop'))\YouTube para Markdown.lnk")
+$lnk.TargetPath = "$PWD\.venv\Scripts\pythonw.exe"
+$lnk.Arguments = "`"$PWD\abrir.pyw`""
+$lnk.WorkingDirectory = "$PWD"
+$lnk.IconLocation = "$PWD\icone.ico,0"
+$lnk.Save()
+```
+
 1. Cole o link de um vídeo ou playlist.
 2. Escolha idioma, timestamps e, se necessário, cookies ou Whisper.
 3. Clique em **Gerar Markdown**.
@@ -176,6 +193,7 @@ confiável.
 | Arquivo | Finalidade |
 |---|---|
 | `app.py` | Servidor local (rotas e transcrição). |
+| `abrir.pyw` / `icone.ico` | Lançador e ícone do atalho da Área de Trabalho. |
 | `interface/` | Página web: HTML, CSS e JavaScript em arquivos separados. |
 | `yt_transcript_md.py` | Extração, conversão para Markdown e CLI. |
 | `youtube_conta.py` | Login com Google e listagem das playlists da conta. |

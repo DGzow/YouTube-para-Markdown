@@ -5,6 +5,21 @@ Todas as mudanças relevantes deste projeto. Formato baseado em
 
 ## [Não publicado]
 
+### Adicionado — atalho na Área de Trabalho com ícone próprio (04/11/2026)
+
+- **`abrir.pyw`:** lançador usado pelo atalho. Se a porta 7860 já responde, só abre o
+  navegador; assim, clicar duas vezes no ícone não tenta subir um segundo servidor (que
+  morreria com "porta ocupada" sem avisar). Se não responde, inicia o `app.py`.
+- **Servidor com console escondido** (`python.exe` + `CREATE_NO_WINDOW`), e não com
+  `pythonw.exe`: o app chama `yt-dlp`, que chama `ffmpeg`. Filhos de um processo sem console
+  abrem um console próprio e piscariam janelas pretas a cada vídeo; com o console escondido
+  eles o herdam e nada aparece.
+- A saída vai para `servidor.log` (sem buffer, `PYTHONUNBUFFERED=1`, para o log ser útil na
+  hora). Se o servidor fecha nos primeiros 2 s, o lançador mostra as últimas linhas do log
+  numa caixa de mensagem, já que não existe terminal para ler o erro.
+- **`icone.ico`:** folha de documento com um "play", em vermelho, com tamanhos de 16 a 256 px.
+- `servidor.log` entrou no `.gitignore`.
+
 ### Alterado — mensagem clara para lista privada sem sessão válida (21/09/2026)
 
 - **Sintoma:** a "Assistir mais tarde" falhava com `ERROR: [youtube:tab] WL: YouTube said:

@@ -38,3 +38,6 @@ transcricoes/
 Thumbs.db
 desktop.ini
 
+
+# Log do servidor iniciado pelo atalho da Area de Trabalho
+servidor.log
