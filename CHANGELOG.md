@@ -5,6 +5,19 @@ Todas as mudanças relevantes deste projeto. Formato baseado em
 
 ## [Não publicado]
 
+### Alterado — extensão salva direto em `transcripts/avulsos/` (10/11/2026)
+
+- **Pedido:** o `.md` da extensão ir direto para a pasta do app, sem passar por Downloads.
+- **Limite do navegador:** extensão só grava dentro de Downloads; não existe permissão para
+  outra pasta. Mandar o arquivo para o servidor local foi descartado porque exigiria o app
+  aberto, e a extensão existe justamente para o uso sem ele.
+- **Solução:** `Downloads\YouTube para Markdown` virou uma junção do Windows apontando para
+  `transcripts/avulsos/`. Nenhuma linha de código mudou. Gravação pelo atalho conferida; as
+  22 transcrições existentes ficaram intactas. Bônus: o app passa a marcar como "já
+  transcrito" o que veio da extensão.
+- **Cuidado registrado** (README da extensão, `transcripts/README.md`, `CLAUDE.md`): desfazer
+  só com `rmdir` no atalho. Excluir com conteúdo apagaria as transcrições reais.
+
 ### Adicionado — extensão de navegador (10/11/2026)
 
 - **Nova pasta [`extensao/`](extensao/):** extensão para Edge e Chrome (Manifest V3). No

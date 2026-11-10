@@ -18,6 +18,24 @@ fila de playlists e "Assistir mais tarde".
 Depois de editar qualquer arquivo daqui, clique em **Recarregar** no cartão da
 extensão nessa mesma página.
 
+## Salvar direto na pasta do app
+
+Extensão só grava dentro de Downloads (trava do navegador). Para o `.md` cair em
+`transcripts/avulsos/`, a pasta `Downloads\YouTube para Markdown` é uma **junção**
+do Windows (atalho de pasta) apontando para lá. Criada em 10/11/2026 nesta máquina.
+Em outra máquina, rode na raiz do projeto (PowerShell), com a pasta de Downloads
+ainda sem essa subpasta:
+
+```powershell
+New-Item -ItemType Junction -Path "$HOME\Downloads\YouTube para Markdown" -Target "$PWD	ranscriptsvulsos"
+```
+
+Com isso o app também reconhece os vídeos baixados pela extensão como "já transcrito".
+
+> ⚠️ Para desfazer, use `cmd /c rmdir "%USERPROFILE%\Downloads\YouTube para Markdown"`,
+> que remove só o atalho. **Nunca** `Remove-Item -Recurse` nem "Excluir" com conteúdo:
+> isso pode apagar as transcrições de verdade, que moram do outro lado.
+
 ## Mapa
 
 | Pasta/arquivo | O que tem |

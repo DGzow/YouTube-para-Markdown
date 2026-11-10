@@ -36,7 +36,9 @@ As duas escolhas ficam guardadas para a próxima vez.
 
 ## O que esperar
 
-- O arquivo vai para **Downloads › YouTube para Markdown**, com o nome do vídeo
+- O arquivo vai para **Downloads › YouTube para Markdown**. Neste computador essa pasta é
+  um atalho para a pasta de transcrições do app, então o arquivo aparece junto com os
+  outros e o app já o reconhece como "já transcrito". O nome é o do vídeo
   seguido do código dele (ex.: `nome-do-video-dQw4w9WgXcQ.md`). Baixar o mesmo
   vídeo de novo substitui o arquivo anterior.
 - O idioma é o que o YouTube mostra no painel, normalmente o mesmo da interface do

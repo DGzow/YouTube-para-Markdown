@@ -44,5 +44,8 @@ Tema do app: botão único com fade linear; o popup segue o tema do sistema.
   próprio YouTube (400); no navegador logado ela funciona.
 - O botão "Mostrar transcrição" aparece **depois** de a página abrir: esperar por ele.
 - `lerTranscricao` é serializada para a página: nada de import ou variável de fora.
+- `Downloads\YouTube para Markdown` é uma **junção** para `transcripts/avulsos/` (a extensão
+  só grava em Downloads). Desfazer só com `rmdir`; `Remove-Item -Recurse` ou excluir com
+  conteúdo apaga as transcrições reais.
 - No Windows, `--cookies-from-browser` do yt-dlp não funciona (DPAPI): use `cookies.txt`.
 - Não tentar contornar detecção de automação do YouTube em teste.

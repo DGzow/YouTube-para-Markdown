@@ -42,5 +42,8 @@ oficial ou reconhecido do áudio (que erra mais).
 
 - Não edite os `.md` aqui esperando manter a edição: gerar o mesmo vídeo de novo
   apaga suas mudanças. Copie para outra pasta antes de mexer.
+- A extensão ([extensao/](../extensao/)) grava em `avulsos/` através do atalho
+  `Downloads\YouTube para Markdown` (junção do Windows). Para desfazer o atalho, use
+  `rmdir` nele; nunca apague com conteúdo, ou estes arquivos vão junto.
 - A CLI ([yt_transcript_md.py](../yt_transcript_md.py)) **não** escreve aqui: ela
   usa `-o ./transcricoes` por padrão.
