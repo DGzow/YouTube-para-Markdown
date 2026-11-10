@@ -27,7 +27,7 @@ Em outra máquina, rode na raiz do projeto (PowerShell), com a pasta de Download
 ainda sem essa subpasta:
 
 ```powershell
-New-Item -ItemType Junction -Path "$HOME\Downloads\YouTube para Markdown" -Target "$PWD	ranscriptsvulsos"
+New-Item -ItemType Junction -Path "$HOME\Downloads\YouTube para Markdown" -Target "$PWD\transcripts\avulsos"
 ```
 
 Com isso o app também reconhece os vídeos baixados pela extensão como "já transcrito".
