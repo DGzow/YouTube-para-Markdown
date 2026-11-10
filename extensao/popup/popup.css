@@ -1,0 +1,101 @@
+/* Visual do popup. Mesmos tokens de cor da interface do app (interface/estilo.css),
+   para as duas peças parecerem do mesmo produto. Cor só como var(--token).
+   O tema segue o do sistema (prefers-color-scheme): um popup de 320 px some
+   ao clicar fora, então um botão de tema aqui não teria onde morar. */
+
+:root{
+  color-scheme:light dark;
+  --bg:#F6F7F9;
+  --surface:#FFFFFF;
+  --hover:#F1F2F6;
+  --fg:#14161C;
+  --muted:#5B6272;
+  --line:#E4E7EE;
+  --borda-forte:#7C8494;          /* contorno de controle: mínimo 3:1 */
+  --accent:#4F46E5;
+  --accent-hover:#4338CA;
+  --accent-contrast:#FFFFFF;
+  --accent-text:#4338CA;
+  --danger:#B42318;
+  --ok-text:#15803D;              /* --ok do app (#16A34A) não chega a 4,5:1 como texto */
+  --raio:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0C0D11;
+    --surface:#15171D;
+    --hover:#1C1F27;
+    --fg:#ECEEF3;
+    --muted:#A0A7B6;
+    --line:#262A34;
+    --borda-forte:#7C8598;
+    --accent:#5A5DEB;
+    --accent-hover:#4F52E0;
+    --accent-contrast:#FFFFFF;
+    --accent-text:#A5B4FC;
+    --danger:#F97066;
+    --ok-text:#4ADE80;
+  }
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  width:320px;padding:14px 16px 16px;
+  background:var(--bg);color:var(--fg);
+  font:14px/1.5 'Segoe UI',system-ui,-apple-system,sans-serif;
+}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.topo{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.topo h1{margin:0;font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--muted)}
+
+.fora p{margin:0;padding:14px;border:1px dashed var(--line);border-radius:var(--raio);color:var(--muted)}
+
+/* Cartão do vídeo: título em até 2 linhas, metadado em texto simples. */
+.video{padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--raio)}
+.titulo{
+  margin:0;font-weight:600;font-size:14px;line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.meta{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+
+/* Chave liga/desliga: o <input> real fica invisível por cima, o trilho é desenho. */
+.opcoes{border:0;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.chave{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:13.5px}
+.chave input{position:absolute;opacity:0;width:34px;height:20px;margin:0;cursor:pointer}
+.trilho{
+  flex:none;width:34px;height:20px;border-radius:10px;
+  border:1.5px solid var(--borda-forte);position:relative;transition:background-color .15s,border-color .15s;
+}
+.trilho::after{
+  content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;
+  background:var(--borda-forte);transition:transform .15s,background-color .15s;
+}
+.chave input:checked + .trilho{background:var(--accent);border-color:var(--accent)}
+.chave input:checked + .trilho::after{transform:translateX(14px);background:var(--accent-contrast)}
+.chave input:focus-visible + .trilho{outline:2px solid var(--accent-text);outline-offset:2px}
+
+.acoes{display:flex;gap:8px;margin-top:14px}
+.botao{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  height:36px;padding:0 14px;border-radius:8px;cursor:pointer;
+  font:inherit;font-weight:600;font-size:13.5px;
+  background:var(--surface);color:var(--fg);border:1px solid var(--line);
+}
+.botao:hover{background:var(--hover)}
+.botao.primario{flex:1;background:var(--accent);color:var(--accent-contrast);border-color:var(--accent)}
+.botao.primario:hover{background:var(--accent-hover)}
+.botao:disabled{opacity:.6;cursor:progress}
+
+.ic{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Status: texto com cor e ícone, sem cápsula. */
+.status{margin:10px 0 0;min-height:20px;font-size:12.5px;color:var(--muted)}
+.status .ic{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px}
+.status.ok{color:var(--ok-text)}
+.status.erro{color:var(--danger)}
+.status .girando{animation:girar .8s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}

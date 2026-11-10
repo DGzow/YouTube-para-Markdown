@@ -1,0 +1,13 @@
+{
+  "name": "youtube-para-markdown-extensao",
+  "private": true,
+  "description": "Extensão de navegador (Chrome/Edge) que baixa a transcrição do vídeo aberto em Markdown.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test testes/markdown.test.js",
+    "test:e2e": "node testes/extensao.e2e.js"
+  },
+  "devDependencies": {
+    "playwright": "1.65.0"
+  }
+}

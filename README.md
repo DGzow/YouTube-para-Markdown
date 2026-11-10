@@ -95,6 +95,13 @@ renomeie o final do nome dos arquivos (o ID do vídeo).
 Entre um vídeo e outro da fila há uma **pausa** (padrão de 6 s, ajustável em
 **Opções**) para o YouTube não bloquear o seu IP em filas grandes.
 
+## Extensão do navegador
+
+A pasta [`extensao/`](extensao/) traz uma extensão para Edge e Chrome: no vídeo aberto, um
+clique no ícone baixa a transcrição em `.md`, no mesmo formato do app, usando a sessão do
+navegador (sem bloqueio de IP e sem `cookies.txt`). Instalação e detalhes no
+[README da extensão](extensao/README.md); como usar em [docs/extensao.md](docs/extensao.md).
+
 ## Uso pela linha de comando
 
 Um vídeo:

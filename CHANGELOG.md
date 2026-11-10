@@ -5,6 +5,41 @@ Todas as mudanças relevantes deste projeto. Formato baseado em
 
 ## [Não publicado]
 
+### Adicionado — extensão de navegador (10/11/2026)
+
+- **Nova pasta [`extensao/`](extensao/):** extensão para Edge e Chrome (Manifest V3). No
+  vídeo aberto, um clique no ícone baixa (ou copia) a transcrição em `.md`, no mesmo
+  formato do app: frontmatter, parágrafos, tempos clicáveis, nome `titulo-ID.md`. Salva em
+  `Downloads/YouTube para Markdown/`. Chaves "Marcações de tempo" e "Perguntar onde salvar",
+  lembradas entre usos.
+- **Por que ler o painel "Transcrição" da página, e não a URL da legenda:** testado hoje, a
+  URL de `captionTracks` volta **vazia** sem o token anti-robô (`pot`) que o YouTube passou a
+  exigir, e o token vale uma vez só (refazer a URL idêntica também volta vazio). O
+  `get_transcript` chamado à mão responde 400 "Precondition check failed". O painel é
+  carregado pela própria página, com a sessão do usuário, e entrega tempo + texto de cada
+  trecho. Ganho prático: na extensão não existe bloqueio de IP nem `cookies.txt`, as duas
+  maiores dores registradas abaixo.
+- **Montagem do Markdown em JavaScript** (`extensao/lib/markdown.js`), traduzida de
+  `yt_transcript_md.py`. Saída comparada com a do Python para os mesmos trechos: idêntica,
+  fora a data de extração. O painel só informa o início de cada trecho; a duração é o tempo
+  até o próximo (o último vai até o fim do vídeo).
+- **Corrida de tempo resolvida:** o botão "Mostrar transcrição" só aparece depois que a
+  descrição termina de carregar, e o primeiro teste falhou dizendo "sem transcrição". O
+  leitor espera até 6 s pelo botão e, na metade, abre a descrição.
+- O leitor fecha o painel se foi ele que abriu, para a página ficar como estava.
+- **Permissões mínimas:** só `www.youtube.com`, `scripting`, `downloads` e `storage`. A
+  extensão não enxerga a URL de nenhum outro site (o teste confirma isso).
+- **Popup** com os tokens de cor do app; tema segue o sistema. Contraste calculado nos dois
+  temas; o verde de sucesso ganhou token próprio (`--ok-text`, 4,68:1) porque o `--ok` do app
+  não chega a 4,5:1 como texto.
+- **Testes:** `npm test` (unidade, 7 casos, também no CI) e `npm run test:e2e` (Playwright:
+  carrega a extensão num Chromium, baixa um vídeo real, confere arquivo, nome pedido e painel
+  fechado; 3 de 3 rodadas passando). Ícones gerados do `icone.ico`.
+- **Limites conhecidos:** sem Whisper, sem playlist (continuam no app); o idioma é o que o
+  YouTube escolhe para o painel (palpite gravado em `language`); Shorts não entram.
+- Criados `CLAUDE.md` (com as armadilhas do token) e `docs/` (documentação funcional,
+  começando pela extensão).
+
 ### Adicionado — atalho na Área de Trabalho com ícone próprio (04/11/2026)
 
 - **`abrir.pyw`:** lançador usado pelo atalho. Se a porta 7860 já responde, só abre o

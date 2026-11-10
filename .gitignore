@@ -41,3 +41,8 @@ desktop.ini
 
 # Log do servidor iniciado pelo atalho da Area de Trabalho
 servidor.log
+
+# Extensão: dependências e saída dos testes
+extensao/node_modules/
+extensao/testes/saida/*
+!extensao/testes/saida/README.md

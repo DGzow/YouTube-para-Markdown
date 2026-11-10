@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube para Markdown",
+  "short_name": "YT → Markdown",
+  "version": "1.0.0",
+  "description": "Baixa a transcrição do vídeo do YouTube aberto como um arquivo Markdown, com parágrafos e marcações de tempo.",
+  "icons": {
+    "16": "icones/icone-16.png",
+    "32": "icones/icone-32.png",
+    "48": "icones/icone-48.png",
+    "128": "icones/icone-128.png"
+  },
+  "action": {
+    "default_title": "Baixar a transcrição em Markdown",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icones/icone-16.png",
+      "32": "icones/icone-32.png"
+    }
+  },
+  "permissions": ["scripting", "downloads", "storage"],
+  "host_permissions": ["https://www.youtube.com/*"]
+}

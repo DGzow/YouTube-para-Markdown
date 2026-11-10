@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube para Markdown</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Ícones (traço no estilo Lucide), desenhados uma vez e reusados com <use>. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-baixar" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></symbol>
+    <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a2 2 0 0 1 2-2h11"/></symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-aviso" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+    <symbol id="i-carregando" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.2-8.56"/></symbol>
+  </svg>
+
+  <header class="topo">
+    <img src="../icones/icone-32.png" alt="" width="20" height="20">
+    <h1>YouTube para Markdown</h1>
+  </header>
+
+  <!-- Aparece quando a aba aberta não é um vídeo do YouTube. -->
+  <section id="fora" class="fora" hidden>
+    <p>Abra um vídeo do YouTube e clique no ícone de novo.</p>
+  </section>
+
+  <main id="principal" hidden>
+    <section class="video">
+      <p id="titulo" class="titulo">…</p>
+      <p id="meta" class="meta"></p>
+    </section>
+
+    <fieldset class="opcoes">
+      <legend class="sr">Opções</legend>
+      <label class="chave">
+        <input type="checkbox" id="comTempos" checked>
+        <span class="trilho" aria-hidden="true"></span>
+        <span>Marcações de tempo</span>
+      </label>
+      <label class="chave">
+        <input type="checkbox" id="perguntarOnde">
+        <span class="trilho" aria-hidden="true"></span>
+        <span>Perguntar onde salvar</span>
+      </label>
+    </fieldset>
+
+    <div class="acoes">
+      <button id="baixar" class="botao primario" type="button">
+        <svg class="ic"><use href="#i-baixar"/></svg> Baixar .md
+      </button>
+      <button id="copiar" class="botao" type="button" aria-label="Copiar o Markdown">
+        <svg class="ic"><use href="#i-copiar"/></svg> Copiar
+      </button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
